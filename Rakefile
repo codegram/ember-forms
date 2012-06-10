@@ -80,4 +80,4 @@ task :autotest do
   system("kicker -e 'rake test' packages")
 end
 
-task :default => :dist
+task :default => :test
