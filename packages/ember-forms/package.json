@@ -1,0 +1,30 @@
+{
+  "name": "ember-forms",
+  "summary": "Short package description",
+  "description": "",
+  "homepage": "https://github.com/josepjaume/ember-forms",
+  "author": "Josep Jaume",
+  "version": "0.0.1.pre",
+
+  "directories": {
+    "lib": "lib"
+  },
+  
+  "dependencies": {
+    "spade": "~> 1.0",
+    "ember-runtime": ">= 0"
+  },
+  "dependencies:development": {
+    "spade-qunit": "~> 1.0.0"
+  },
+  "bpm:build": {
+    "bpm_libs.js": {
+      "files": ["lib"],
+      "modes": "*"
+    },
+    "ember-forms/bpm_tests.js": {
+      "files": ["tests"],
+      "modes": ["debug"]
+    }
+  }
+}

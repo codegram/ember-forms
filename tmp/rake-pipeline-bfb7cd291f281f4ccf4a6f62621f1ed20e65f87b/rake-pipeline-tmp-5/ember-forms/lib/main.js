@@ -1,0 +1,1 @@
+minispade.register('ember-forms', "(function() {minispade.require(\"ember-forms/core\");\nminispade.require(\"ember-forms/label\");\nminispade.require(\"ember-forms/components/base\");\nminispade.require(\"ember-forms/components/text_field\");\nminispade.require(\"ember-forms/buttons\");\nminispade.require(\"ember-forms/form\");\n\n})();\n//@ sourceURL=ember-forms");

@@ -1,0 +1,56 @@
+var JSHINTRC = {
+    "predef": [
+        "console",
+        "Ember",
+        "DS",
+        "Handlebars",
+        "Metamorph",
+        "ember_assert",
+        "ember_warn",
+        "ember_deprecate",
+        "ember_deprecateFunc",
+        "require",
+        "equal",
+        "test",
+        "testBoth",
+        "testWithDefault",
+        "raises",
+        "deepEqual",
+        "start",
+        "stop",
+        "ok",
+        "strictEqual",
+        "module",
+        "expect",
+        "minispade"
+    ],
+
+    "node" : false,
+    "es5" : true,
+    "browser" : true,
+
+    "boss" : true,
+    "curly": false,
+    "debug": false,
+    "devel": false,
+    "eqeqeq": true,
+    "evil": true,
+    "forin": false,
+    "immed": false,
+    "laxbreak": false,
+    "newcap": true,
+    "noarg": true,
+    "noempty": false,
+    "nonew": false,
+    "nomen": false,
+    "onevar": false,
+    "plusplus": false,
+    "regexp": false,
+    "undef": true,
+    "sub": true,
+    "strict": false,
+    "white": false
+}
+;
+
+minispade.register('ember-forms/~tests/test', "(function() {test(\"a test\", function() {\n  ok(window.Test, \"always fine\");\n});\n\n})();\n//@ sourceURL=ember-forms/~tests/test");

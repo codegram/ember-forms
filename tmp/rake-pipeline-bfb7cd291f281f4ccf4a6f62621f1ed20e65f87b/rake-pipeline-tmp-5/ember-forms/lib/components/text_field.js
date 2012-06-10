@@ -1,0 +1,1 @@
+minispade.register('ember-forms/components/text_field', "(function() {EF.TextComponent = EF.BaseComponent.extend({\n  InputView: Ember.TextField.extend({\n    componentBinding: 'parentView',\n    valueBinding: 'component.value',\n    attributeBindings: ['name'],\n    name: 'component.name'\n  })\n});\n\n})();\n//@ sourceURL=ember-forms/components/text_field");

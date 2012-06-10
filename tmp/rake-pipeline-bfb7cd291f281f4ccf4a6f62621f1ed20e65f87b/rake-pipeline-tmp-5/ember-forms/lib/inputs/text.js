@@ -1,0 +1,1 @@
+minispade.register('ember-forms/inputs/text', "(function() {EF.Input = Ember.TextField.extend({\n  componentBinding: 'parentView',\n  valueBinding: 'component.value',\n  attributeBindings: ['name'],\n  name: 'component.name'\n});\n\n})();\n//@ sourceURL=ember-forms/inputs/text");

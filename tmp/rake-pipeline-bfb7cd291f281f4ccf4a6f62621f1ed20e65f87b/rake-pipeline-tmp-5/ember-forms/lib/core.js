@@ -1,0 +1,1 @@
+minispade.register('ember-forms/core', "(function() {window.EF = Ember.Namespace.create();\n\n})();\n//@ sourceURL=ember-forms/core");

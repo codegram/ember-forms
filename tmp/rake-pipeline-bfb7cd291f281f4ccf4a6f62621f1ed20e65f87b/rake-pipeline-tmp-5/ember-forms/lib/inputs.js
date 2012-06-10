@@ -1,0 +1,1 @@
+minispade.register('ember-forms/inputs', "(function() {minispade.require(\"inputs/text\");\n\n})();\n//@ sourceURL=ember-forms/inputs");
