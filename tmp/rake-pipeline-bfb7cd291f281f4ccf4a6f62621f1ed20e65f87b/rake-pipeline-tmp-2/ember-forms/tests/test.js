@@ -1,1 +1,0 @@
-minispade.register('ember-forms/~tests/test', "(function() {test(\"a test\", function() {\n  ok(EF, \"always fine\");\n});\n\n})();\n//@ sourceURL=ember-forms/~tests/test");

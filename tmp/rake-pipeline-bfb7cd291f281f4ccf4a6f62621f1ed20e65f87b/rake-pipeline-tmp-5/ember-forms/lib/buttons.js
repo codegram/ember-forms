@@ -1,1 +1,0 @@
-minispade.register('ember-forms/buttons', "(function() {EF.SubmitButton = Ember.View.extend({\n  tagName: 'button',\n  attributeBindings: ['type'],\n  type: 'submit',\n  template: Ember.Handlebars.compile(\"Save\")\n});\n\n})();\n//@ sourceURL=ember-forms/buttons");
