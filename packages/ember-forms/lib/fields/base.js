@@ -1,7 +1,7 @@
-EF.BaseComponent = Ember.View.extend({
+EF.BaseField = Ember.View.extend({
   name: null,
-  formBinding: 'parentView',
-  objectBinding: 'form.object',
+  formView: null,
+  objectBinding: 'formView.object',
   tagName: 'div',
   classNames: ['input'],
   labelBinding: 'name',
@@ -9,7 +9,8 @@ EF.BaseComponent = Ember.View.extend({
   InputView: null,
   template: Ember.Handlebars.compile(
     '{{view view.LabelView viewName="labelView"}}' +
-    '{{view view.InputView viewName="inputView"}}'
+    '{{view view.InputView viewName="inputView" fieldBinding="view" ' +
+    ' valueBinding="field.value" nameBinding="field.name"}}'
   ),
   data: Ember.computed(function(){
     var data = {};

@@ -1,36 +1,13 @@
 /*
  * Usage:
  */
-EF.Form = Ember.ContainerView.extend({
+EF.Form = Ember.View.extend({
   tagName: 'form',
   attributeBindings: ['action'],
-  fields: [],
+  fieldViews: Ember.A(),
   buttons: ['submit'],
   object: null,
-
-  fieldViews: Ember.computed(function(){
-    return this.get('fields').map(function(options){
-      var componentName = Ember.String.camelize(options.type || 'text');
-      delete(options.type);
-      componentName = componentName.replace(/^./, componentName[0].toUpperCase());
-      componentName = componentName + 'Component';
-      var component = EF[componentName].create(options);
-      return component;
-    });
-  }).property('fields'),
-
-  childViews: Ember.computed(function(){
-    return this.get('fieldViews').concat(this.get('buttonViews'));
-  }).property('fields'),
-
-  buttonViews: Ember.computed(function(){
-    return this.get('buttons').map(function(buttonName){
-      buttonName = buttonName.replace(/^./, buttonName[0].toUpperCase());
-      buttonName = buttonName + 'Button';
-      var button = EF[buttonName].create();
-      return button;
-    });
-  }).property('buttons'),
+  isForm: true,
 
   data: Ember.computed(function(){
     var data = {};
