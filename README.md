@@ -3,7 +3,7 @@
 Ember forms is a library for Ember.js to assist in the creation of forms and
 binding them to objects.
 
-**Disclaimer: Ultra-alpha shit!**
+**Disclaimer: Under hard development!**
 
 ## Usage
 
