@@ -6,3 +6,4 @@ require("ember-forms/fields/textarea_field");
 require("ember-forms/buttons");
 require("ember-forms/form");
 require("ember-forms/helpers/field");
+require("ember-forms/helpers/buttons");

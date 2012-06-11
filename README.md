@@ -13,7 +13,7 @@ Just declare your form as a view extending EF.Form:
 App.PostForm = EF.Form.extend({
   objectBinding: 'App.someObject',
   template: Ember.Handlebars.compile(
-    '{{field title}}{{field body type=textarea}}' +
+    '{{field title}}{{field body as="textarea"}}' +
     '{{form buttons}}'
   ),
   save: function(data){
