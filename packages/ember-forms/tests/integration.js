@@ -2,7 +2,8 @@ test("it creates a form", function() {
   var form = EF.Form.create({
     template: Ember.Handlebars.compile(
       '{{ field name }}'+
-      '{{ field email type="textarea"}}'
+      '{{ field email type="textarea"}}' +
+      '{{ form buttons }}'
     )
   });
 
@@ -12,6 +13,7 @@ test("it creates a form", function() {
 
   equal(form.$('.input input').length, 1, "it has a text field");
   equal(form.$('.input textarea').length, 1, "it has a text area");
+  console.log(form.$());
 
   Ember.run(function(){
     form.destroy();

@@ -21,6 +21,9 @@ EF.Form = Ember.View.extend({
   }).property('fieldViews.@each.value'),
 
   submit: function(){
+    this.save(this.get('data'));
     return false;
-  }
+  },
+
+  save: function(data){ }
 });
