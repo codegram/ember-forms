@@ -15,8 +15,8 @@ Just declare your form as a view extending EF.Form:
 App.PostForm = EF.Form.extend({
   objectBinding: 'App.someObject',
   template: Ember.Handlebars.compile(
-    '{{field title}}{{field body as="textarea"}}' +
-    '{{form buttons}}'
+    '{{field title label="Post title"}}{{field body as="textarea"}}' +
+    '{{form buttons name="Save post"}}'
   ),
   save: function(data){
     this.get('object').setProperties(data);

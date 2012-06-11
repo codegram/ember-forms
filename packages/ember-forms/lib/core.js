@@ -6,6 +6,13 @@ window.EF = Ember.Namespace.create({
     }while(currentView = view.get('parentView'));
   },
 
+  findFieldRecursively: function(view){
+    var currentView = view;
+    do{
+      if(currentView.get('isField') === true){ return currentView; }
+    }while(currentView = view.get('parentView'));
+  },
+
   findField: function(name){
     name = name || 'text';
     var fieldName = Ember.String.camelize(name);

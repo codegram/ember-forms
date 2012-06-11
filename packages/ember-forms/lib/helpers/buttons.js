@@ -3,15 +3,9 @@ var findFormRecursively = EF.findFormRecursively,
 
 EF.ButtonHelper = Ember.Object.create({
   helper: function(view, options){
-    var buttonView = Ember.View.extend({
-      tagName: 'button',
-      attributeBindings: ['type'],
-      type: 'submit',
-      name: 'Save',
-      template: Ember.Handlebars.compile("{{unbound view.name}}"),
-    });
+    var buttonView = EF.SubmitButton;
     var currentView = options.data.view;
-    currentView.appendChild(buttonView, options);
+    currentView.appendChild(buttonView, options.hash);
   }
 });
 

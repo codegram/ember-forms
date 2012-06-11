@@ -3,12 +3,14 @@ var findFormRecursively = EF.findFormRecursively,
 
 EF.FieldHelper = Ember.Object.create({
   helper: function(view, name, options){
-    var optionsHash = options.hash;
-    var type = optionsHash.as;
+    var optionsHash = options.hash,
+        type = optionsHash.as,
+        currentView = options.data.view,
+        fieldView = findField(type);
+
+    if(Ember.empty(optionsHash.name)){ optionsHash.name = name; }
     delete(optionsHash.as);
-    var currentView = options.data.view;
-    var fieldView = findField(type);
-    currentView.appendChild(fieldView, {name: name});
+    currentView.appendChild(fieldView, optionsHash);
   }
 });
 

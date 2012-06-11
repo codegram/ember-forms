@@ -5,10 +5,10 @@ EF.BaseField = Ember.View.extend({
   formView: null,
   tagName: 'div',
   classNames: ['input'],
-  labelBinding: 'name',
   LabelView: EF.Label.extend(),
   InputView: null,
   value: null,
+  isField: true,
 
   template: Ember.Handlebars.compile(
     '{{view view.LabelView viewName="labelView"}}' +

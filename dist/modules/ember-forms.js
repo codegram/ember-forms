@@ -7,6 +7,13 @@ window.EF = Ember.Namespace.create({
     }while(currentView = view.get('parentView'));
   },
 
+  findFieldRecursively: function(view){
+    var currentView = view;
+    do{
+      if(currentView.get('isField') === true){ return currentView; }
+    }while(currentView = view.get('parentView'));
+  },
+
   findField: function(name){
     name = name || 'text';
     var fieldName = Ember.String.camelize(name);
@@ -26,12 +33,19 @@ window.EF = Ember.Namespace.create({
 
 
 (function() {
+var findFieldRecursively = EF.findFieldRecursively;
+
 EF.Label = Ember.View.extend({
   tagName: 'label',
-  componentBinding: 'parentView',
+  field: Ember.computed(function(){
+    return findFieldRecursively(this);
+  }),
   attributeBindings: ['for'],
-  formBinding: 'component.form',
-  nameBinding: 'component.label',
+  formBinding: 'field.form',
+  name: Ember.computed(function(){
+    return this.getPath('field.label') || this.getPath('field.name');
+  }),
+  nameBinding: 'field.label',
   template: Ember.Handlebars.compile("{{view.name}}"),
   didInsertElement: function(){
     // We bind it here to avoid re-rendering before the element was inserted
@@ -51,10 +65,10 @@ EF.BaseField = Ember.View.extend({
   formView: null,
   tagName: 'div',
   classNames: ['input'],
-  labelBinding: 'name',
   LabelView: EF.Label.extend(),
   InputView: null,
   value: null,
+  isField: true,
 
   template: Ember.Handlebars.compile(
     '{{view view.LabelView viewName="labelView"}}' +
@@ -117,7 +131,8 @@ EF.SubmitButton = Ember.View.extend({
   tagName: 'button',
   attributeBindings: ['type'],
   type: 'submit',
-  template: Ember.Handlebars.compile("Save")
+  name: "Save",
+  template: Ember.Handlebars.compile("{{view.name}}")
 });
 
 })();
@@ -165,12 +180,14 @@ var findFormRecursively = EF.findFormRecursively,
 
 EF.FieldHelper = Ember.Object.create({
   helper: function(view, name, options){
-    var optionsHash = options.hash;
-    var type = optionsHash.as;
+    var optionsHash = options.hash,
+        type = optionsHash.as,
+        currentView = options.data.view,
+        fieldView = findField(type);
+
+    if(Ember.empty(optionsHash.name)){ optionsHash.name = name; }
     delete(optionsHash.as);
-    var currentView = options.data.view;
-    var fieldView = findField(type);
-    currentView.appendChild(fieldView, {name: name});
+    currentView.appendChild(fieldView, optionsHash);
   }
 });
 
@@ -188,15 +205,9 @@ var findFormRecursively = EF.findFormRecursively,
 
 EF.ButtonHelper = Ember.Object.create({
   helper: function(view, options){
-    var buttonView = Ember.View.extend({
-      tagName: 'button',
-      attributeBindings: ['type'],
-      type: 'submit',
-      name: 'Save',
-      template: Ember.Handlebars.compile("{{unbound view.name}}"),
-    });
+    var buttonView = EF.SubmitButton;
     var currentView = options.data.view;
-    currentView.appendChild(buttonView, options);
+    currentView.appendChild(buttonView, options.hash);
   }
 });
 

@@ -1,9 +1,9 @@
 test("it creates a form", function() {
   var form = EF.Form.create({
     template: Ember.Handlebars.compile(
-      '{{ field name }}'+
-      '{{ field email as="textarea"}}' +
-      '{{ form buttons }}'
+      '{{ field name label="Your name" }}'+
+      '{{ field email as="textarea" }}' +
+      '{{ form buttons name="Create" }}'
     )
   });
 
@@ -13,6 +13,10 @@ test("it creates a form", function() {
 
   equal(form.$('.input input').length, 1, "it has a text field");
   equal(form.$('.input textarea').length, 1, "it has a text area");
+
+  equal(form.$('.input label:first').text(), "Your name", "it sets the label");
+
+  equal(form.$('button[type=submit]').text(), "Create", "it overrides the button name");
 
   Ember.run(function(){
     form.destroy();
