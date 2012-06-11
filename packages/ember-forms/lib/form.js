@@ -6,7 +6,7 @@ EF.Form = Ember.View.extend({
   attributeBindings: ['action'],
   fieldViews: Ember.A(),
   buttons: ['submit'],
-  object: null,
+  content: null,
   isForm: true,
 
   data: Ember.computed(function(){
