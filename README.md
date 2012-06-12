@@ -1,4 +1,4 @@
-# Ember Forms
+# Ember Forms [![Build Status](https://secure.travis-ci.org/codegram/ember-forms.png?branch=master)](http://travis-ci.org/codegram/ember-forms)
 
 Ember forms is a library for Ember.js to assist in the creation of forms and
 binding them to objects.
