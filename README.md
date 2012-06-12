@@ -3,8 +3,6 @@
 Ember forms is a library for Ember.js to assist in the creation of forms and
 binding them to objects.
 
-**Disclaimer: Under hard development!**
-
 ## Usage
 
 ### Simple example
@@ -54,6 +52,20 @@ Then create a handlebars layout more complex than that:
 </fieldset>
 {{form buttons}}
 ```
+
+## Field types
+
+Right now only three field types are supported:
+
+* **text**: `<input type='text' />`
+* **textarea**: `<textarea/>`
+* **select**: `<select/>` tag with options. Accepts:
+  * **content**: A group of options following [ember's
+    conventions](http://docs.emberjs.com/#doc=Ember.Select&method=content&src=false)
+
+All the fields also accept the following options:
+* **name**: Overrides the `name` attribute.
+* **label**: Overrides the label name
 
 ## Contributing
 
