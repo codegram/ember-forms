@@ -1,19 +1,26 @@
 require("ember-forms/core");
 
-var findFieldRecursively = EF.findFieldRecursively;
+var findFieldRecursively = EF.findFieldRecursively,
+    findFormRecursively  = EF.findFormRecursively;
 
+/**
+  @class
+  @private
+
+  Represents an input's label. Depends on the following attributes:
+
+  * name: The label name. Will fallback to the raw field name
+
+  @extends Ember.View
+*/
 EF.Label = Ember.View.extend({
   tagName: 'label',
-  field: Ember.computed(function(){
-    return findFieldRecursively(this);
-  }),
   attributeBindings: ['for'],
-  formBinding: 'field.form',
+  template: Ember.Handlebars.compile("{{view.name}}"),
+  field: Ember.computed(function(){ return findFieldRecursively(this); }),
   name: Ember.computed(function(){
     return this.getPath('field.label') || this.getPath('field.name');
   }),
-  nameBinding: 'field.label',
-  template: Ember.Handlebars.compile("{{view.name}}"),
   didInsertElement: function(){
     // We bind it here to avoid re-rendering before the element was inserted
     Ember.bind(this, 'for', 'component.inputView.elementId');
