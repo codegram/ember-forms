@@ -7,3 +7,4 @@ tests/source/
 .project
 
 tests/ember-forms-tests.js
+.github-upload-token

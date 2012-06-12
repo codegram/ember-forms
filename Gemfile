@@ -8,4 +8,6 @@ gem "uglifier", "~> 1.0.3"
 group :development do
   gem "rack"
   gem "kicker"
+  gem 'rest-client'
+  gem 'github_api'
 end

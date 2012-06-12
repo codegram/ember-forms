@@ -59,20 +59,6 @@ input "packages" do
 end
 
 input "packages" do
-  match "*/lib/**/*.js" do
-    minispade :rewrite_requires => true, :string => true, :module_id_generator => proc { |input|
-      id = input.path.dup
-      id.sub!('/lib/', '/')
-      id.sub!(/\.js$/, '')
-      id.sub!(/\/main$/, '')
-      id
-    }
-
-    concat "ember-forms-spade.js"
-  end
-end
-
-input "packages" do
   match "*/lib/**/main.js" do
     neuter(
       :additional_dependencies => proc { |input|
