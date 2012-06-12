@@ -48,3 +48,22 @@ test("it populates a form with content's values", function() {
   equal(form.$("textarea").val(), "rafa@capybara.com");
   equal(data.email, 'rafa@capybara.com');
 });
+
+test("it allows options for a select", function(){
+  var form = EF.Form.create({
+    names: Ember.A([{id: 1, name: 'John'}]),
+    template: Ember.Handlebars.compile(
+      '{{ field age as="select" contentBinding="formView.names" }}'
+    )
+  });
+
+  Ember.run(function(){
+    form.appendTo("#qunit-fixture");
+  });
+
+  equal(form.$("option:first").text(), "John");
+
+  Ember.run(function(){
+    form.destroy();
+  });
+});

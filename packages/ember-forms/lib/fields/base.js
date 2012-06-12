@@ -19,10 +19,16 @@ EF.BaseField = Ember.View.extend({
   ),
 
   setFormView: function(){
-    var formView = findFormRecursively(this.get('parentView'));
-    formView.get('fieldViews').pushObject(this);
-    this.set('formView', formView);
-    this.set('content', formView.get('content'));
+    var parentView, formView;
+
+    if(parentView = this.get('parentView')){
+      formView = findFormRecursively(parentView);
+    }
+    if(formView){
+      formView.get('fieldViews').pushObject(this);
+      this.set('formView', formView);
+      this.set('content', formView.get('content'));
+    }
   },
 
   bindValue: function(){

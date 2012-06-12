@@ -77,10 +77,16 @@ EF.BaseField = Ember.View.extend({
   ),
 
   setFormView: function(){
-    var formView = findFormRecursively(this.get('parentView'));
-    formView.get('fieldViews').pushObject(this);
-    this.set('formView', formView);
-    this.set('content', formView.get('content'));
+    var parentView, formView;
+
+    if(parentView = this.get('parentView')){
+      formView = findFormRecursively(parentView);
+    }
+    if(formView){
+      formView.get('fieldViews').pushObject(this);
+      this.set('formView', formView);
+      this.set('content', formView.get('content'));
+    }
   },
 
   bindValue: function(){
@@ -119,6 +125,24 @@ EF.TextField = EF.BaseField.extend({
 EF.TextareaField = EF.BaseField.extend({
   InputView: Ember.TextArea.extend({
     template: Ember.Handlebars.compile("{{view.value}}")
+  })
+});
+
+})();
+
+
+
+(function() {
+EF.SelectField = EF.BaseField.extend({
+  optionLabelPath: 'content.name',
+  optionValuePath: 'content.id',
+  InputView: Ember.Select.extend({
+    init: function(){
+      this.set('optionLabelPath', this.getPath('parentView.optionLabelPath'));
+      this.set('optionValuePath', this.getPath('parentView.optionValuePath'));
+      this._super();
+    },
+    contentBinding: 'field.content'
   })
 });
 
