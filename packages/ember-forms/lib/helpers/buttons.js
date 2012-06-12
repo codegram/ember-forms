@@ -11,6 +11,16 @@ EF.ButtonHelper = Ember.Object.create({
   }
 });
 
+/**
+  A helper to be used in a handlebars template. Will generate a submit button
+  that intented to trigger the form submission. Usage:
+
+     {{ form buttons }}
+
+  It accepts the following options:
+
+  * name: The button's text
+*/
 Ember.Handlebars.registerHelper('form', function(name, options){
   if(name === 'buttons'){
     EF.ButtonHelper.helper(this, options);
