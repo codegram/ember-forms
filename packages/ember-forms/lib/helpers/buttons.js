@@ -1,3 +1,5 @@
+require("ember-forms/buttons");
+
 var findFormRecursively = EF.findFormRecursively,
     findField = EF.findField;
 

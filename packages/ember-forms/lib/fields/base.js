@@ -1,3 +1,5 @@
+require("ember-forms/label");
+
 var findFormRecursively = EF.findFormRecursively;
 
 EF.BaseField = Ember.View.extend({
