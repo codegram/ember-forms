@@ -54,3 +54,7 @@ Then create a handlebars layout more complex than that:
 </fieldset>
 {{form buttons}}
 ```
+
+## License
+
+MIT License. Copyright 2011 [Codegram Technologies](http://codegram.com)
