@@ -57,11 +57,18 @@ Then create a handlebars layout more complex than that:
 
 Right now only three field types are supported:
 
-* **text**: `<input type='text' />`
-* **textarea**: `<textarea/>`
-* **select**: `<select/>` tag with options. Accepts:
-  * **content**: A group of options following [ember's
-    conventions](http://docs.emberjs.com/#doc=Ember.Select&method=content&src=false)
+### text
+`<input type='text' />`
+
+### textarea
+`<textarea/>`
+
+### select
+`<select/>` tag with options. Accepts:
+
+* **content**: An array following [ember's conventions](http://docs.emberjs.com/#doc=Ember.Select&method=content&src=false)
+
+### All the fields
 
 All the fields also accept the following options:
 * **name**: Overrides the `name` attribute.
