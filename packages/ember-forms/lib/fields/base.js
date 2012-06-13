@@ -2,21 +2,15 @@ require("ember-forms/label");
 
 var findFormRecursively = EF.findFormRecursively;
 
-EF.BaseField = Ember.View.extend({
+EF.BaseField = Ember.ContainerView.extend({
   name: null,
   formView: null,
   tagName: 'div',
   classNames: ['input'],
-  LabelView: EF.Label.extend(),
+  childViews: ['labelView', 'inputView'],
   InputView: null,
   value: null,
   isField: true,
-
-  template: Ember.Handlebars.compile(
-    '{{view view.LabelView viewName="labelView"}}' +
-    '{{view view.InputView viewName="inputView" fieldBinding="view" ' +
-    ' valueBinding="view.value" nameBinding="view.name"}}'
-  ),
 
   setFormView: function(){
     var parentView, formView;
@@ -45,5 +39,17 @@ EF.BaseField = Ember.View.extend({
     this._super();
     this.setFormView();
     this.bindValue();
-  }
+  },
+
+  labelView: Ember.computed(function(){
+    return EF.Label.create({});
+  }),
+
+  inputView: Ember.computed(function(){
+    return this.get('InputView').create({
+      field: this,
+      valueBinding: 'field.value',
+      name: this.get('name')
+    });
+  })
 });
