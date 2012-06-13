@@ -47,7 +47,7 @@ EF.Form = Ember.View.extend({
       }
     });
     return data;
-  }).property('fieldViews.@each.value'),
+  }).volatile(),
 
   submit: function(){
     this.save(this.get('data'));

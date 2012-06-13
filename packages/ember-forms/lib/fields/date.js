@@ -19,7 +19,7 @@ EF.DateComponent = Ember.ContainerView.extend({
       this.setPath('yearView.value', year);
     }
     return value;
-  }).property('dayView.value', 'monthView.value', 'yearView.value'),
+  }).volatile(),
 
   dayView: Ember.Select.create({
     prompt: "Day",
@@ -41,7 +41,7 @@ EF.DateComponent = Ember.ContainerView.extend({
         "June", "July", "August", "September", "October", "November", 
         "December"]);
       return Ember.A(months.map(function(month, index){
-        return {id: (index + 1 + ''), name: month};
+        return {id: (index + ''), name: month};
       }));
     })
   }),

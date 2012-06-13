@@ -31,9 +31,9 @@ EF.BaseField = Ember.ContainerView.extend({
 
   data: Ember.computed(function(){
     var data = {};
-    data[this.get('name')] = this.get('value');
+    data[this.get('name')] = this.getPath('inputView.value');
     return data;
-  }).property('value'),
+  }).volatile(),
 
   init: function(){
     this._super();
