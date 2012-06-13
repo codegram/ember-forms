@@ -70,6 +70,9 @@ Right now only three field types are supported:
 * **optionValuePath**: The name of the `property` that should be used as value.
 * **optionLabelPath**: The name of the `property` that should be used as label.
 
+### date
+Three `<select/>` tags representing day, month and year.
+
 ### All the fields
 
 All the fields also accept the following options:

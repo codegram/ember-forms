@@ -1,2 +1,4 @@
-require("ember-forms/fields/text.js");
-require("ember-forms/fields/textarea.js");
+require("ember-forms/fields/text");
+require("ember-forms/fields/textarea");
+require("ember-forms/fields/select");
+require("ember-forms/fields/date");
