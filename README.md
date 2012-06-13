@@ -11,11 +11,12 @@ Just declare your form as a view extending EF.Form:
 
 ```Javascript
 App.PostForm = EF.Form.extend({
-  objectBinding: 'App.someObject',
+  object: person,
   gender: Ember.A([{id: 'm', name: 'Male'}, {id: 'f', name: 'Female'}]),
   template: Ember.Handlebars.compile(
-    '{{field title label="Post title"}}' +
-    '{{field body as="textarea"}}' +
+    '{{field name label="Post title"}}' +
+    '{{field interests as="textarea"}}' +
+    '{{field birthday as="date"}}' +
     '{{field gender as="select" optionsBinding="formView.gender"}}' +
     '{{form buttons name="Save post"}}'
   ),
