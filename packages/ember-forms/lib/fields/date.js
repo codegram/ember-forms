@@ -68,7 +68,7 @@ EF.DateComponent = Ember.ContainerView.extend({
       var years = [],
           currentDate = new Date(),
           currentYear = currentDate.getFullYear();
-      for(var i=1920; i<=currentYear; i++){
+      for(var i=currentYear; i>=1920; i--){
         years.push(i + "");
       }
       return Ember.A(years);
