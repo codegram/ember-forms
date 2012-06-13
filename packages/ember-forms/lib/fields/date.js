@@ -1,4 +1,5 @@
 require("ember-forms/fields/base");
+require("ember-forms/controls/unbound_select");
 
 var e = Ember.empty;
 
@@ -25,7 +26,7 @@ EF.DateComponent = Ember.ContainerView.extend({
     return value;
   }).volatile(),
 
-  dayView: Ember.Select.extend({
+  dayView: EF.UnboundSelect.extend({
     attributeBindings: ['name'],
     name: Ember.computed(function(){
       return this.getPath('parentView').get('name') + '_day';
@@ -40,9 +41,7 @@ EF.DateComponent = Ember.ContainerView.extend({
     }).cacheable()
   }),
 
-  monthView: Ember.Select.extend({
-    optionLabelPath: 'content.name',
-    optionValuePath: 'content.id',
+  monthView: EF.UnboundSelect.extend({
     prompt: "- Month -",
     attributeBindings: ['name'],
     name: Ember.computed(function(){
@@ -52,13 +51,13 @@ EF.DateComponent = Ember.ContainerView.extend({
       var months = Ember.A(["January", "February", "March", "April", "May",
         "June", "July", "August", "September", "October", "November", 
         "December"]);
-      return Ember.A(months.map(function(month, index){
-        return {id: (index + ''), name: month};
-      }));
+      return months.map(function(month, index){
+        return {value: (index + ''), label: month};
+      });
     }).cacheable()
   }),
 
-  yearView: Ember.Select.extend({
+  yearView: EF.UnboundSelect.extend({
     prompt: "- Year -",
     attributeBindings: ['name'],
     name: Ember.computed(function(){
