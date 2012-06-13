@@ -1,14 +1,17 @@
 require("ember-forms/fields/base");
 
 EF.SelectField = EF.BaseField.extend({
-  optionLabelPath: 'content.name',
-  optionValuePath: 'content.id',
   InputView: Ember.Select.extend({
     init: function(){
-      this.set('optionLabelPath', this.getPath('parentView.optionLabelPath'));
-      this.set('optionValuePath', this.getPath('parentView.optionValuePath'));
+      var labelPath = this.getPath('field.optionLabelPath'),
+          valuePath = this.getPath('field.optionValuePath');
+
+      this.set('optionLabelPath', 'content.' + (labelPath || 'name'));
+      this.set('optionValuePath', 'content.' + (valuePath || 'id'));
       this._super();
     },
-    contentBinding: 'field.content'
+    content: Ember.computed(function(){
+      return this.getPath('field.content');
+    }).property('field.content')
   })
 });

@@ -67,6 +67,10 @@ Right now only three field types are supported:
 `<select/>` tag with options. Accepts:
 
 * **content**: An array following [ember's conventions](http://docs.emberjs.com/#doc=Ember.Select&method=content&src=false)
+* **optionValuePath**: The name of the `property` that should be used as value.
+  Defaults to `id`.
+* **optionLabelPath**: The name of the `property` that should be used as label.
+  Defaults to `name`.
 
 ### All the fields
 
