@@ -53,7 +53,7 @@ test("it allows options for a select", function(){
   var form = EF.Form.create({
     names: Ember.A([{id: 1, fullName: 'John'}]),
     template: Ember.Handlebars.compile(
-      '{{ field age as="select" contentBinding="formView.names" optionLabelPath="fullName"}}'
+      '{{ field age as="select" contentBinding="formView.names" optionValuePath="id" optionLabelPath="fullName"}}'
     )
   });
 

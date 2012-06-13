@@ -6,8 +6,9 @@ EF.SelectField = EF.BaseField.extend({
       var labelPath = this.getPath('field.optionLabelPath'),
           valuePath = this.getPath('field.optionValuePath');
 
-      this.set('optionLabelPath', 'content.' + (labelPath || 'name'));
-      this.set('optionValuePath', 'content.' + (valuePath || 'id'));
+      if(labelPath){ this.set('optionLabelPath', 'content.' + labelPath); }
+      if(valuePath){ this.set('optionValuePath', 'content.' + valuePath); }
+
       this._super();
     },
     content: Ember.computed(function(){
