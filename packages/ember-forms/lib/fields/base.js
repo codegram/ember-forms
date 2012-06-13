@@ -7,7 +7,6 @@ EF.BaseField = Ember.ContainerView.extend({
   formView: null,
   tagName: 'div',
   classNames: ['input'],
-  childViews: ['labelView', 'inputView'],
   InputView: null,
   value: null,
   isField: true,
@@ -37,19 +36,18 @@ EF.BaseField = Ember.ContainerView.extend({
 
   init: function(){
     this._super();
+    var labelView = EF.Label.create(),
+        inputView = this.get('InputView').create({
+          field: this,
+          valueBinding: 'field.value',
+          name: this.get('name')
+        });
+    
+    this.set('labelView', labelView);
+    this.set('inputView', inputView);
+    this.get('childViews').pushObject(labelView);
+    this.get('childViews').pushObject(inputView);
     this.setFormView();
     this.bindValue();
-  },
-
-  labelView: Ember.computed(function(){
-    return EF.Label.create({});
-  }),
-
-  inputView: Ember.computed(function(){
-    return this.get('InputView').create({
-      field: this,
-      valueBinding: 'field.value',
-      name: this.get('name')
-    });
-  })
+  }
 });
