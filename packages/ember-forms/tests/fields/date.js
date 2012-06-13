@@ -1,13 +1,18 @@
 test("it creates a date field", function() {
   var dateField = EF.DateField.create({});
 
+  Ember.run(function(){
+    dateField.appendTo("#qunit-fixture");
+  });
+
+  equal(dateField.get('value'), undefined, "it is undefined by default");
+
   var date = new Date(),
       day = date.getDay(),
       month = date.getMonth(),
       year = date.getFullYear();
 
   Ember.run(function(){
-    dateField.appendTo("#qunit-fixture");
     dateField.set('value', date);
   });
 
