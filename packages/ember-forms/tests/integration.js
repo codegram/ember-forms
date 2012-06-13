@@ -49,6 +49,25 @@ test("it populates a form with content's values", function() {
   equal(data.email, 'rafa@capybara.com');
 });
 
+test("it select without options", function(){
+  var form = EF.Form.create({
+    numbers: Ember.A([1, 2, 3]),
+    template: Ember.Handlebars.compile(
+      '{{ field age as="select" contentBinding="formView.numbers"}}'
+    )
+  });
+
+  Ember.run(function(){
+    form.appendTo("#qunit-fixture");
+  });
+
+  equal(form.$("option:first").text(), "1");
+
+  Ember.run(function(){
+    form.destroy();
+  });
+});
+
 test("it allows options for a select", function(){
   var form = EF.Form.create({
     names: Ember.A([{id: 1, fullName: 'John'}]),
