@@ -5,6 +5,7 @@ var e = Ember.empty;
 
 EF.DateComponent = Ember.ContainerView.extend({
   childViews: ['dayView', 'monthView', 'yearView'],
+  tagName: 'span',
 
   value: Ember.computed(function(key, value){
     var day, month, year;
