@@ -25,3 +25,20 @@ test("it creates a date field", function() {
   });
 });
 
+test("it adds some appropiate field names", function() {
+  var dateField = EF.DateField.create({
+    name: 'test'
+  });
+
+  Ember.run(function(){
+    dateField.appendTo("#qunit-fixture");
+  });
+
+  equal(dateField.$('select:first').attr('name'), 'test_day');
+  equal(dateField.$('select:nth-child(2)').attr('name'), 'test_month');
+  equal(dateField.$('select:nth-child(3)').attr('name'), 'test_year');
+
+  Ember.run(function(){
+    dateField.destroy();
+  });
+});

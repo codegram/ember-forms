@@ -26,7 +26,11 @@ EF.DateComponent = Ember.ContainerView.extend({
   }).volatile(),
 
   dayView: Ember.Select.extend({
-    prompt: "Day",
+    attributeBindings: ['name'],
+    name: Ember.computed(function(){
+      return this.getPath('parentView').get('name') + '_day';
+    }),
+    prompt: "- Day -",
     content: Ember.computed(function(){
       var days = [];
       for(var i=1; i<=31; i++){
@@ -39,7 +43,11 @@ EF.DateComponent = Ember.ContainerView.extend({
   monthView: Ember.Select.extend({
     optionLabelPath: 'content.name',
     optionValuePath: 'content.id',
-    prompt: "Month",
+    prompt: "- Month -",
+    attributeBindings: ['name'],
+    name: Ember.computed(function(){
+      return this.getPath('parentView').get('name') + '_month';
+    }),
     content: Ember.computed(function(){
       var months = Ember.A(["January", "February", "March", "April", "May",
         "June", "July", "August", "September", "October", "November", 
@@ -51,7 +59,11 @@ EF.DateComponent = Ember.ContainerView.extend({
   }),
 
   yearView: Ember.Select.extend({
-    prompt: "Year",
+    prompt: "- Year -",
+    attributeBindings: ['name'],
+    name: Ember.computed(function(){
+      return this.getPath('parentView').get('name') + '_year';
+    }),
     content: Ember.computed(function(){
       var years = [],
           currentDate = new Date(),
