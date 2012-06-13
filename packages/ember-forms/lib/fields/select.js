@@ -11,7 +11,7 @@ EF.SelectField = EF.BaseField.extend({
       this._super();
     },
     content: Ember.computed(function(){
-      return this.getPath('field.content');
+      return this.getPath('field.content') || Ember.A([]);
     }).property('field.content')
   })
 });
