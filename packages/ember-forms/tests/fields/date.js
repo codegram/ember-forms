@@ -8,9 +8,9 @@ test("it creates a date field", function() {
   equal(dateField.get('value'), undefined, "it is undefined by default");
 
   var date = new Date(),
-      day = date.getDay(),
-      month = date.getMonth(),
-      year = date.getFullYear();
+      day = date.getUTCDate(),
+      month = date.getUTCMonth(),
+      year = date.getUTCFullYear();
 
   Ember.run(function(){
     dateField.set('value', date);
