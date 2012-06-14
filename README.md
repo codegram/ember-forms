@@ -11,7 +11,7 @@ Just declare your form as a view extending EF.Form:
 
 ```Javascript
 App.PostForm = EF.Form.extend({
-  object: person,
+  content: person,
   gender: Ember.A([{id: 'm', name: 'Male'}, {id: 'f', name: 'Female'}]),
   template: Ember.Handlebars.compile(
     '{{field name label="Post title"}}' +
@@ -21,7 +21,7 @@ App.PostForm = EF.Form.extend({
     '{{form buttons name="Save post"}}'
   ),
   save: function(data){
-    this.get('object').setProperties(data);
+    this.get('content').setProperties(data);
   }
 });
 ```
@@ -32,9 +32,9 @@ Just declare your form as a view extending EF.Form:
 
 ```Javascript
 App.PostForm = EF.Form.extend({
-  objectBinding: 'App.someObject',
+  contentBinding: 'App.someObject',
   save: function(data){
-    this.get('object').setProperties(data);
+    this.get('content').setProperties(data);
   }
 });
 ```
