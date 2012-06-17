@@ -28,7 +28,7 @@ EF.Form = Ember.View.extend({
   isForm: true,
   name: Ember.computed(function(){
     var constructor = this.getPath('content.constructor');
-    if(constructor){
+    if(constructor && constructor.isClass){
       var className = constructor.toString().split('.').pop();
       return Ember.String.decamelize(className);
     }
