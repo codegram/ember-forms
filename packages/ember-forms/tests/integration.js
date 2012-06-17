@@ -24,7 +24,8 @@ test("it creates a form", function() {
 });
 
 test("it populates a form with content's values", function() {
-  var content = Ember.Object.create({
+  EF.SomeObjectClass = Ember.Object.extend();
+  var content = EF.SomeObjectClass.create({
     name: 'Rafael Nadal',
     email: 'rafa@capybara.com'
   });
@@ -47,6 +48,8 @@ test("it populates a form with content's values", function() {
   equal(data.name, 'Rafael Nadal');
   equal(form.$("textarea").val(), "rafa@capybara.com");
   equal(data.email, 'rafa@capybara.com');
+  console.log(form.get('content'));
+  equal(form.get('name'), 'some_object_class', "it sets the class name");
 });
 
 test("it select without options", function(){

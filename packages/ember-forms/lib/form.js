@@ -25,6 +25,13 @@ EF.Form = Ember.View.extend({
   buttons: ['submit'],
   content: null,
   isForm: true,
+  name: Ember.computed(function(){
+    var constructor = this.getPath('content.constructor');
+    if(constructor){
+      var className = constructor.toString().split('.').pop();
+      return Ember.String.decamelize(className);
+    }
+  }).property('content'),
 
   /**
     It returns this form fields data in an object.
