@@ -48,7 +48,6 @@ test("it populates a form with content's values", function() {
   equal(data.name, 'Rafael Nadal');
   equal(form.$("textarea").val(), "rafa@capybara.com");
   equal(data.email, 'rafa@capybara.com');
-  console.log(form.get('content'));
   equal(form.get('name'), 'some_object_class', "it sets the class name");
 });
 
