@@ -27,6 +27,7 @@ EF.Form = Ember.View.extend({
   buttons: ['submit'],
   content: null,
   isForm: true,
+  submitName: 'Save',
   name: Ember.computed(function(){
     var constructor = this.getPath('content.constructor');
     if(constructor && constructor.isClass){

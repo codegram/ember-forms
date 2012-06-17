@@ -11,12 +11,12 @@ EF.SubmitButton = Ember.View.extend({
   attributeBindings: ['type'],
   type: 'submit',
   name: Ember.computed(function(){ return this.getPath('parentView.submitName'); }),
-  form: Ember.computed(function(){ return findFormRecursively(this); }),
   template: Ember.Handlebars.compile("{{view.name}}")
 });
 
 EF.Buttons = Ember.ContainerView.extend({
   classNames: ['buttons'],
   childViews: [EF.SubmitButton],
-  submitName: 'Save'
+  form: Ember.computed(function(){ return findFormRecursively(this); }),
+  submitName: Ember.computed(function(){ return this.getPath('form.submitName'); })
 });
