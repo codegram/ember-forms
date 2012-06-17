@@ -5,7 +5,7 @@ var findFormRecursively = EF.findFormRecursively,
 
 EF.ButtonHelper = Ember.Object.create({
   helper: function(view, options){
-    var buttonView = EF.SubmitButton;
+    var buttonView = EF.Buttons;
     var currentView = options.data.view;
     currentView.appendChild(buttonView, options.hash);
   }

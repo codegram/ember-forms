@@ -3,7 +3,7 @@ test("it creates a form", function() {
     template: Ember.Handlebars.compile(
       '{{ field name label="Your name" }}'+
       '{{ field email as="textarea" }}' +
-      '{{ form buttons name="Create" }}'
+      '{{ form buttons submitName="Create" }}'
     )
   });
 
