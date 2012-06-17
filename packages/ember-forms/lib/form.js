@@ -21,6 +21,7 @@
 EF.Form = Ember.View.extend({
   tagName: 'form',
   classNameBindings: ['name'],
+  classNames: ['ember-form'],
   attributeBindings: ['action'],
   fieldViews: Ember.A(),
   buttons: ['submit'],
