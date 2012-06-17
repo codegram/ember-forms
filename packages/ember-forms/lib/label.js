@@ -18,7 +18,7 @@ EF.Label = Ember.View.extend({
   attributeBindings: ['for'],
   template: Ember.Handlebars.compile("{{view.name}}"),
   field: Ember.computed(function(){ return findFieldRecursively(this); }),
-  form: Ember.computed(function(){ return findFormRecursively(this); }),
+  form: Ember.computed(function(){ return this.getPath('field.formView'); }),
   name: Ember.computed(function(){
     return this.getPath('field.label') || this.getPath('field.name');
   }),
