@@ -17,5 +17,6 @@ EF.SubmitButton = Ember.View.extend({
 
 EF.Buttons = Ember.ContainerView.extend({
   classNames: ['buttons'],
-  childViews: [EF.SubmitButton]
+  childViews: [EF.SubmitButton],
+  submitName: 'Save'
 });
