@@ -25,7 +25,16 @@ EF.BaseField = Ember.ContainerView.extend({
   },
 
   bindValue: function(){
-    Ember.oneWay(this, 'value', 'content.' + this.get('name'));
+    var name = this.get('name');
+    var path = 'content.' + name;
+    var value = this.getPath(path);
+    this.set('value', this.getPath(path));
+    var content = this.get('content');
+    if(content){
+      content.addObserver(this.get('name'), this, function(){
+        console.log(this.getPath('content.name'));
+      });
+    }
   },
 
   data: Ember.computed(function(){

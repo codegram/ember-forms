@@ -88,3 +88,25 @@ test("it allows options for a select", function(){
     form.destroy();
   });
 });
+
+test("it correctly sets a select's selected value", function(){
+  var form = EF.Form.create({
+    names: Ember.A([{id: 1, fullName: 'John'}, {id: 2, fullName: 'Peter'}]),
+    content: Ember.Object.create({
+      father: 2
+    }),
+    template: Ember.Handlebars.compile(
+      '{{ field father as="select" contentBinding="formView.names" optionValuePath="id" optionLabelPath="fullName"}}'
+    )
+  });
+
+  Ember.run(function(){
+    form.appendTo("#qunit-fixture");
+  });
+
+  equal(form.get('data').father, 2);
+
+  Ember.run(function(){
+    form.destroy();
+  });
+});
