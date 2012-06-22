@@ -40,3 +40,22 @@ test("it uses an array as both value and label", function() {
     select.destroy();
   });
 });
+
+test("renders the prompt", function() {
+  var select = EF.SelectField.create({
+    content: Ember.A([1, 2, 3]),
+    prompt: 'Select a value...'
+  });
+
+  Ember.run(function(){
+    select.appendTo("#qunit-fixture");
+  });
+
+  var firstOption = select.$("option:first");
+  equal(firstOption.text(), "Select a value...", "it assigns a prompt");
+  equal(firstOption.attr('value'), "");
+
+  Ember.run(function(){
+    select.destroy();
+  });
+});
