@@ -29,7 +29,7 @@ EF.Form = Ember.View.extend({
   isForm: true,
   submitName: 'Save',
   name: Ember.computed(function(){
-    var constructor = this.getPath('content.constructor');
+    var constructor = this.get('content.constructor');
     if(constructor && constructor.isClass){
       var className = constructor.toString().split('.').pop();
       return Ember.String.decamelize(className);

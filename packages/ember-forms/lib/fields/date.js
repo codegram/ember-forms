@@ -11,9 +11,9 @@ EF.DateComponent = Ember.ContainerView.extend({
   value: Ember.computed(function(key, value){
     var day, month, year;
     if (arguments.length === 1){
-      day   = this.getPath('dayView.value');
-      month = this.getPath('monthView.value');
-      year = this.getPath('yearView.value');
+      day   = this.get('dayView.value');
+      month = this.get('monthView.value');
+      year = this.get('yearView.value');
       if(!e(day) && !e(month) && !e(year)){
         return new Date(year, month, day, 12, 0, 0);
       }
@@ -21,9 +21,9 @@ EF.DateComponent = Ember.ContainerView.extend({
       day = value.getUTCDate() + '';
       month = value.getUTCMonth() + '';
       year = value.getUTCFullYear() + '';
-      this.setPath('dayView.value', day);
-      this.setPath('monthView.value', month);
-      this.setPath('yearView.value', year);
+      this.set('dayView.value', day);
+      this.set('monthView.value', month);
+      this.set('yearView.value', year);
     }
     return value;
   }).volatile(),
@@ -31,7 +31,7 @@ EF.DateComponent = Ember.ContainerView.extend({
   dayView: EF.UnboundSelect.extend({
     attributeBindings: ['name'],
     name: Ember.computed(function(){
-      return this.getPath('parentView').get('name') + '_day';
+      return this.get('parentView').get('name') + '_day';
     }),
     prompt: "- Day -",
     content: Ember.computed(function(){
@@ -47,7 +47,7 @@ EF.DateComponent = Ember.ContainerView.extend({
     prompt: "- Month -",
     attributeBindings: ['name'],
     name: Ember.computed(function(){
-      return this.getPath('parentView').get('name') + '_month';
+      return this.get('parentView').get('name') + '_month';
     }),
     content: Ember.computed(function(){
       var months = Ember.A(["January", "February", "March", "April", "May",
@@ -63,7 +63,7 @@ EF.DateComponent = Ember.ContainerView.extend({
     prompt: "- Year -",
     attributeBindings: ['name'],
     name: Ember.computed(function(){
-      return this.getPath('parentView').get('name') + '_year';
+      return this.get('parentView').get('name') + '_year';
     }),
     content: Ember.computed(function(){
       var years = [],
@@ -81,9 +81,9 @@ EF.DateField = EF.BaseField.extend({
   InputView: EF.DateComponent.extend({}),
   value: Ember.computed(function(key, value){
     if(arguments.length === 1){
-      return this.getPath('inputView.value');
+      return this.get('inputView.value');
     }else{
-      this.setPath('inputView.value', value);
+      this.set('inputView.value', value);
       return value;
     }
   })

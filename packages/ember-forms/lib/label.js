@@ -18,9 +18,9 @@ EF.Label = Ember.View.extend({
   attributeBindings: ['for'],
   template: Ember.Handlebars.compile("{{view.name}}"),
   field: Ember.computed(function(){ return findFieldRecursively(this); }),
-  form: Ember.computed(function(){ return this.getPath('field.formView'); }),
+  form: Ember.computed(function(){ return this.get('field.formView'); }),
   name: Ember.computed(function(){
-    return this.getPath('field.label') || this.getPath('field.name');
+    return this.get('field.label') || this.get('field.name');
   }),
   didInsertElement: function(){
     // We bind it here to avoid re-rendering before the element was inserted
