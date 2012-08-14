@@ -18,9 +18,9 @@ EF.DateComponent = Ember.ContainerView.extend({
         return new Date(year, month, day, 12, 0, 0);
       }
     }else if(value){
-      day = value.getUTCDate() + '';
-      month = value.getUTCMonth() + '';
-      year = value.getUTCFullYear() + '';
+      day = value.getDate() + '';
+      month = value.getMonth() + '';
+      year = value.getFullYear() + '';
       this.set('dayView.value', day);
       this.set('monthView.value', month);
       this.set('yearView.value', year);
