@@ -40,6 +40,7 @@ EF.UnboundSelect = Ember.View.extend({
   }).property('value'),
 
   setValue: Ember.observer(function(){
+    if(!this.$()) return;
     var value = this.get('value');
     var option = this.$('option[value=' + value + ']');
     option.siblings().attr('selected', null);
