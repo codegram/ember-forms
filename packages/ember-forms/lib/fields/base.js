@@ -43,7 +43,8 @@ EF.BaseField = Ember.ContainerView.extend({
         inputView = this.get('InputView').create({
           field: this,
           valueBinding: 'field.value',
-          name: this.get('name')
+          name: this.get('name'),
+          placeholder: this.get('placeholder')
         });
     
     this.set('labelView', labelView);
