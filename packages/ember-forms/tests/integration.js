@@ -27,7 +27,8 @@ test("it populates a form with content's values", function() {
   EF.SomeObjectClass = Ember.Object.extend();
   var content = EF.SomeObjectClass.create({
     name: 'Rafael Nadal',
-    email: 'rafa@capybara.com'
+    email: 'rafa@capybara.com',
+    password: 'test1234'
   });
 
   var form = EF.Form.create({
@@ -35,6 +36,7 @@ test("it populates a form with content's values", function() {
     template: Ember.Handlebars.compile(
       '{{ field name placeholder="Your name"}}'+
       '{{ field email as="textarea"}}' +
+      '{{ field password as="password" }}' +
       '{{ form buttons }}'
     )
   });
@@ -49,6 +51,7 @@ test("it populates a form with content's values", function() {
   equal(form.$("input:first").attr('placeholder'), "Your name");
   equal(form.$("textarea").val(), "rafa@capybara.com");
   equal(data.email, 'rafa@capybara.com');
+  equal(form.$("input[type=password]").val(), "test1234");
   equal(form.get('name'), 'some_object_class', "it sets the class name");
 });
 
