@@ -42,3 +42,21 @@ test("it adds some appropiate field names", function() {
     dateField.destroy();
   });
 });
+
+test("options", function() {
+  var dateField = EF.DateField.create({
+    startYear: 2050,
+    endYear: 2012
+  });
+
+  Ember.run(function(){
+    dateField.appendTo("#qunit-fixture");
+  });
+
+  equal(dateField.$('select:nth-child(3) option:nth-child(2)').val(), '2050', 'it sets the startYear');
+  equal(dateField.$('select:nth-child(3) option:last').val(), '2012', 'it sets the endYear');
+
+  Ember.run(function(){
+    dateField.destroy();
+  });
+});

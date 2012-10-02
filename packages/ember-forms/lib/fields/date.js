@@ -65,11 +65,15 @@ EF.DateComponent = Ember.ContainerView.extend({
     name: Ember.computed(function(){
       return this.get('parentView').get('name') + '_year';
     }),
+    startYear: function(){
+      return this.get('parentView.parentView.startYear') || new Date().getFullYear();
+    },
+    endYear: function(){
+      return this.get('parentView.parentView.endYear') || (this.startYear() - 100);
+    },
     content: Ember.computed(function(){
-      var years = [],
-          currentDate = new Date(),
-          currentYear = currentDate.getFullYear();
-      for(var i=currentYear; i>=1920; i--){
+      var years = [];
+      for(var i=this.startYear(); i>=this.endYear(); i--){
         years.push(i + "");
       }
       return Ember.A(years);
@@ -78,7 +82,11 @@ EF.DateComponent = Ember.ContainerView.extend({
 });
 
 EF.DateField = EF.BaseField.extend({
-  InputView: EF.DateComponent.extend({}),
+  InputView: EF.DateComponent.extend({
+    init: function(){
+      this._super();
+    },
+  }),
   value: Ember.computed(function(key, value){
     if(arguments.length === 1){
       return this.get('inputView.value');
