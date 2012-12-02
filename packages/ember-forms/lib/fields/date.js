@@ -26,7 +26,7 @@ EF.DateComponent = Ember.ContainerView.extend({
       this.set('yearView.value', year);
     }
     return value;
-  }).volatile(),
+  }).property('dayView.value', 'monthView.value', 'yearView.value'),
 
   dayView: EF.UnboundSelect.extend({
     attributeBindings: ['name'],
@@ -40,7 +40,7 @@ EF.DateComponent = Ember.ContainerView.extend({
         days.push(i + '');
       }
       return Ember.A(days);
-    }).cacheable()
+    })
   }),
 
   monthView: EF.UnboundSelect.extend({
@@ -56,7 +56,7 @@ EF.DateComponent = Ember.ContainerView.extend({
       return months.map(function(month, index){
         return {value: (index + ''), label: month};
       });
-    }).cacheable()
+    })
   }),
 
   yearView: EF.UnboundSelect.extend({
@@ -77,7 +77,7 @@ EF.DateComponent = Ember.ContainerView.extend({
         years.push(i + "");
       }
       return Ember.A(years);
-    }).cacheable()
+    })
   })
 });
 
