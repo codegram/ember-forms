@@ -1,5 +1,6 @@
 require("ember-forms/fields/base");
 require("ember-forms/controls/unbound_select");
+require("ember-forms/labels");
 
 var e = Ember.empty;
 
@@ -33,7 +34,7 @@ EF.DateComponent = Ember.ContainerView.extend({
     name: Ember.computed(function(){
       return this.get('parentView').get('name') + '_day';
     }),
-    prompt: "- Day -",
+    promptBinding: 'EF.Labels.dayPrompt',
     content: Ember.computed(function(){
       var days = [];
       for(var i=1; i<=31; i++){
@@ -44,15 +45,13 @@ EF.DateComponent = Ember.ContainerView.extend({
   }),
 
   monthView: EF.UnboundSelect.extend({
-    prompt: "- Month -",
+    promptBinding: 'EF.Labels.monthPrompt',
     attributeBindings: ['name'],
     name: Ember.computed(function(){
       return this.get('parentView').get('name') + '_month';
     }),
     content: Ember.computed(function(){
-      var months = Ember.A(["January", "February", "March", "April", "May",
-        "June", "July", "August", "September", "October", "November", 
-        "December"]);
+      var months = EF.Labels.get('months');
       return months.map(function(month, index){
         return {value: (index + ''), label: month};
       });
@@ -60,7 +59,7 @@ EF.DateComponent = Ember.ContainerView.extend({
   }),
 
   yearView: EF.UnboundSelect.extend({
-    prompt: "- Year -",
+    promptBinding: 'EF.Labels.yearPrompt',
     attributeBindings: ['name'],
     name: Ember.computed(function(){
       return this.get('parentView').get('name') + '_year';
