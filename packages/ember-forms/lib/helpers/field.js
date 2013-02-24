@@ -8,7 +8,7 @@ EF.FieldHelper = Ember.Object.create({
         currentView = options.data.view,
         fieldView = findField(type);
 
-    if(Ember.empty(optionsHash.name)){ optionsHash.name = name; }
+    if(Ember.isEmpty(optionsHash.name)){ optionsHash.name = name; }
     delete(optionsHash.as);
     currentView.appendChild(fieldView, optionsHash);
   }

@@ -2,7 +2,7 @@ require("ember-forms/fields/base");
 require("ember-forms/controls/unbound_select");
 require("ember-forms/labels");
 
-var e = Ember.empty;
+var e = Ember.isEmpty;
 
 EF.DateComponent = Ember.ContainerView.extend({
   childViews: ['dayView', 'monthView', 'yearView'],

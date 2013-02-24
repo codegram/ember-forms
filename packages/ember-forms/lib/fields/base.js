@@ -49,8 +49,8 @@ EF.BaseField = Ember.ContainerView.extend({
     
     this.set('labelView', labelView);
     this.set('inputView', inputView);
-    this.get('childViews').pushObject(labelView);
-    this.get('childViews').pushObject(inputView);
+    this.pushObject(labelView);
+    this.pushObject(inputView);
     this.setFormView();
     this.bindValue();
   }
